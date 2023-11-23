@@ -5,13 +5,14 @@ import OnBoardingScreen from '../pages/OnBoardingScreen';
 import TaskListScreen from '../pages/TaskListScreen';
 import AddTaskScreen from '../pages/AddTaskScreen';
 import colors from '../themes/Colors';
+import ScreenName from '../constants/ScreenName';
 
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
     <Stack.Navigator
-      initialRouteName="TaskList"
+      initialRouteName="Splash"
       screenOptions={{
         headerStyle: {
           backgroundColor: colors.background.primary,
@@ -19,8 +20,16 @@ export default function Routes() {
         headerTintColor: colors.text,
         headerBackTitleVisible: false,
       }}>
-      <Stack.Screen name="Splash" component={SplashScreen} />
-      <Stack.Screen name="Onboarding" component={OnBoardingScreen} />
+      <Stack.Screen
+        name={ScreenName.splash}
+        component={SplashScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={ScreenName.onboarding}
+        component={OnBoardingScreen}
+        options={{headerShown: false}}
+      />
       <Stack.Screen name="TaskList" component={TaskListScreen} />
       <Stack.Screen name="AddTask" component={AddTaskScreen} />
     </Stack.Navigator>
